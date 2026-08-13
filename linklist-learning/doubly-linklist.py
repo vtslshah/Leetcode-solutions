@@ -26,22 +26,34 @@ class DoublyLinkList:
         self.head.prev = temp
         self.head = temp
 
-    # def insertAnyLocation(self,value,valueLocation):
-    #     temp = Node(value)
-    #     if self.head == None:
-    #         self.head = temp
-    #         return True
+    def insertAnyLocation(self,value,valueLocation):
+        t = self.head
+        while t.next != None:
+            if t.data == valueLocation:
+                break
+            else:
+                t = t.next
+        temp = Node(value)
+        temp.next = t.next
+        t.next.prev = temp
+        t.next = temp
+        temp.prev = t
 
-    #     t = self.head
-    #     while t.next != None:
-    #         if t.data == value:
-    #             break
-    #         else:
-    #             t = t.next
-
-    #         temp.next = t.next
-    #         t.next.pre
-        
+    def deleteNode(self,value):
+        t = self.head
+        if t.data == value:
+            self.head = t.next
+            t.next.prev = None
+            return True
+        while t.next != None:
+            if t.data == value:
+                t.prev.next = t.next
+                t.next.prev = t.prev
+                return True
+            else:
+                t = t.next
+        if t.data == value:
+            t.prev.next = None
 
     def printMyList(self):
         t = self.head
@@ -54,6 +66,7 @@ obj = DoublyLinkList()
 obj.InsetToEnd(10)
 obj.InsetToEnd(20)
 obj.InsetToEnd(30)
-obj.insertAtStart(40)
-# obj.insertAnyLocation(35,30)
+obj.insertAtStart(1)
+obj.insertAnyLocation(25,20)
+obj.deleteNode(30)
 obj.printMyList()
