@@ -17,5 +17,5 @@ class Solution:
         # return list(sorted_by_keys_desc)[:k]
 
 solution = Solution()
-solution.topKFrequent()
+print(solution.topKFrequent())
         

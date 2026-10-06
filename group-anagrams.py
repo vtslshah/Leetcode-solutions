@@ -5,6 +5,7 @@ class Solution:
         anagramlist = {}
         for str in strs:
             sortedString = "".join(sorted(str))
+            
             if not anagramlist.get(sortedString,''):
                 anagramlist[sortedString] = []
 
